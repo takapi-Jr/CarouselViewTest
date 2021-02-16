@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarouselViewTest.Views.MainPage"
+             Title="{Binding Title}">
+
+    <StackLayout>
+        <CarouselView ItemsSource="{Binding Items}" PeekAreaInsets="30">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <ContentView>
+                        <Grid RowDefinitions="Auto, *" Margin="20">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NextCommand}" />
+                            </Grid.GestureRecognizers>
+                            <Label Grid.Row="0" Text="{Binding Name}" />
+                            <BoxView Grid.Row="1" Color="{Binding Color}" />
+                        </Grid>
+                    </ContentView>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+        <Button Text="NextPage" Command="{Binding NextCommand}" />
+    </StackLayout>
+
+</ContentPage>
