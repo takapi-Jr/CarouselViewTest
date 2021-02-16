@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CarouselViewTest.Views.MainPage"
+             x:Name="mainPage"
              Title="{Binding Title}">
 
     <StackLayout>
@@ -11,7 +12,8 @@
                     <ContentView>
                         <Grid RowDefinitions="Auto, *" Margin="20">
                             <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding NextCommand}" />
+                                <!--<TapGestureRecognizer Command="{Binding NextCommand}" />-->
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.NextCommand, Source={x:Reference mainPage}}" />
                             </Grid.GestureRecognizers>
                             <Label Grid.Row="0" Text="{Binding Name}" />
                             <BoxView Grid.Row="1" Color="{Binding Color}" />
