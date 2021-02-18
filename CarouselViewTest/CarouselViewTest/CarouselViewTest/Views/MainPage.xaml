@@ -5,25 +5,40 @@
              x:Name="mainPage"
              Title="{Binding Title}">
 
-    <StackLayout>
-        <CarouselView ItemsSource="{Binding Items}" PeekAreaInsets="30">
+    <Grid RowDefinitions="*, *">
+        <CarouselView ItemsSource="{Binding NgItems}" PeekAreaInsets="30">
             <CarouselView.ItemTemplate>
                 <DataTemplate>
                     <ContentView>
                         <Grid RowDefinitions="Auto, *" Margin="20">
+                            <!-- NG -->
                             <Grid.GestureRecognizers>
-                                <!--<TapGestureRecognizer Command="{Binding NextCommand}" />-->
-                                <TapGestureRecognizer Command="{Binding Path=BindingContext.NextCommand, Source={x:Reference mainPage}}" />
+                                <TapGestureRecognizer Command="{Binding NextCommand}" />
                             </Grid.GestureRecognizers>
                             <Label Grid.Row="0" Text="{Binding Name}" />
-                            <BoxView Grid.Row="1" Color="{Binding Color}" />
+                            <Image Grid.Row="1" BackgroundColor="{Binding Color}" />
                         </Grid>
                     </ContentView>
                 </DataTemplate>
             </CarouselView.ItemTemplate>
         </CarouselView>
 
-        <Button Text="NextPage" Command="{Binding NextCommand}" />
-    </StackLayout>
+        <CarouselView Grid.Row="1" ItemsSource="{Binding OkItems}" PeekAreaInsets="30">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <ContentView>
+                        <Grid RowDefinitions="Auto, *" Margin="20">
+                            <!-- OK -->
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.NextCommand, Source={x:Reference mainPage}}" />
+                            </Grid.GestureRecognizers>
+                            <Label Grid.Row="0" Text="{Binding Name}" />
+                            <Image Grid.Row="1" BackgroundColor="{Binding Color}" />
+                        </Grid>
+                    </ContentView>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+    </Grid>
 
 </ContentPage>

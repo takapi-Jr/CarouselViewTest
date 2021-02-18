@@ -21,16 +21,28 @@ namespace CarouselViewTest.ViewModels
             await this.NavigationService.NavigateAsync("NextPage");
         }
 
-        private List<Item> items = new List<Item>()
+        private List<Item> ngItems = new List<Item>()
         {
-            new Item { Name = "test1", Color = Xamarin.Forms.Color.Red },
-            new Item { Name = "test2", Color = Xamarin.Forms.Color.Blue },
-            new Item { Name = "test3", Color = Xamarin.Forms.Color.Green },
+            new Item { Name = "NG_test1", Color = Xamarin.Forms.Color.Red },
+            new Item { Name = "NG_test2", Color = Xamarin.Forms.Color.Blue },
+            new Item { Name = "NG_test3", Color = Xamarin.Forms.Color.Green },
         };
-        public List<Item> Items
+        public List<Item> NgItems
         {
-            get { return items; }
-            set { SetProperty(ref items, value); }
+            get { return ngItems; }
+            set { SetProperty(ref ngItems, value); }
+        }
+
+        private List<Item> okItems = new List<Item>()
+        {
+            new Item { Name = "OK_test1", Color = Xamarin.Forms.Color.Red },
+            new Item { Name = "OK_test2", Color = Xamarin.Forms.Color.Blue },
+            new Item { Name = "OK_test3", Color = Xamarin.Forms.Color.Green },
+        };
+        public List<Item> OkItems
+        {
+            get { return okItems; }
+            set { SetProperty(ref okItems, value); }
         }
 
         public MainPageViewModel(INavigationService navigationService)
